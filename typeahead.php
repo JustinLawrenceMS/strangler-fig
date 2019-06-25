@@ -1,24 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-<script type="text/javascript">
-//<![CDATA[
-var owa_baseUrl = 'https://locallywild.tk/owa/Open-Web-Analytics-1.6.2/';
-var owa_cmds = owa_cmds || [];
-owa_cmds.push(['setSiteId', '152570ba678d87ece95116937c45189e']);
-owa_cmds.push(['trackPageView']);
-owa_cmds.push(['trackClicks']);
-
-(function() {
-	var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
-	owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
-	_owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
-	var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
-}());
-//]]>
-</script>
-				
-
+	    
         <script src="jquery.min.js"></script>
         <script src="bootstrap3.js"></script>
         <link rel="stylesheet" href="assets/css/pp.css" />
@@ -75,7 +58,7 @@ $(document).ready(function(){
 </script>
 <?php
 $query = $_GET['searchterm'];
-$string = file_get_contents("ppdata.json");
+$string = file_get_contents("cdcdata.json");
 $json_a = json_decode($string, true);
 
 $keyola = array();
