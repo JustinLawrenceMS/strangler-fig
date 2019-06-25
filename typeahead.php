@@ -58,7 +58,7 @@ $(document).ready(function(){
 </script>
 <?php
 $query = $_GET['searchterm'];
-$string = file_get_contents("cdcdata.json");
+$string = file_get_contents("cdc_data.json");
 $json_a = json_decode($string, true);
 
 $keyola = array();

@@ -11,7 +11,7 @@ $query = $_POST['query'];
 
 // Get content of JSON object
 
-$string = file_get_contents("ppdata.json");
+$string = file_get_contents("cdc_data.json");
 
 // Decode JSON object and store in variable $json_a
 
