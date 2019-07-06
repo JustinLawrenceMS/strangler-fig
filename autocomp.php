@@ -7,7 +7,7 @@
 
 // Get query from post variable
 
-$query = $_POST['query'];
+$query = $_GET['term'];
 
 // Get content of JSON object
 
@@ -34,6 +34,13 @@ for($i=0; $i<count($json_a['dataset']); $i++){
 
 // echo json encoded to feed to autocomplete script
 
+if(count($data)<10){
 echo json_encode($data);
-
+}
+elseif(count($data)>10){
+	for($i=0; $i<10; $i++){
+		$data10[] = $data[$i];
+	}
+	echo json_encode($data10);
+}
 ?>
