@@ -22,13 +22,6 @@
             h2 {
                 width: 50%;
 	    }
-		.truncate {
-		  width: 250px;
-		  white-space: nowrap;
-		  overflow: hidden;
-		  text-overflow: ellipsis;
-		}
-
         </style>
 
 </head>
