@@ -8,5 +8,5 @@ This is just an example of what you can do with a JSON dataset, short and sweet.
 
 ```git clone https://github.com/JustinLawrenceMS/json_typeahead```
 
-The dataset comes from the Centers of Disease Control.
+The dataset comes from the Centers for Disease Control.
 jQuery comes from jQuery and Bootstrap comes from Bootstrap.
