@@ -77,7 +77,7 @@ for($i=0; $i<count($json_a['dataset']); $i++){
 if(isset($query)){
 
     echo '
-         <table class="table-dark table-responsive">
+         <table class="table-dark">
              <tr>
                   <td><p><b>Title: </b>'.$keyola[0]["title"].'</p></td></tr>
              <tr>
