@@ -11,7 +11,7 @@ $query = $_GET['term'];
 
 // Get content of JSON object
 
-$string = file_get_contents("cdc_data.json");
+$string = file_get_contents("../cdc_data.json");
 
 // Decode JSON object and store in variable $json_a
 
@@ -24,7 +24,7 @@ $data = array();
 
 for($i=0; $i<count($json_a['dataset']); $i++){
 
-    if(strpos($json_a['dataset'][$i]['title'], $query) != false){
+    if(stripos($json_a['dataset'][$i]['title'], $query) != false){
 
         $data[] = $json_a['dataset'][$i]['title'];
 
