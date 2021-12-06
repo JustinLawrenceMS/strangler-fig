@@ -18,7 +18,7 @@
 
 		body {
 
-			background-image: url('https://dataset.buttered.app/images/bg.jpg');
+			background-image: url('/images/bg.jpg');
 			background-size: cover;
 			background-repeat: no-repeat;
 
