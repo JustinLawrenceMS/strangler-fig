@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-	    
+	<title>
+		JSON Dataset
+	</title>    
         <script  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  ></script>
+  >
+	</script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-  ></script> 
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  >
+	</script> 
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+	</script>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
         <meta charset="utf-8" />
@@ -47,7 +52,9 @@
         </p>
         <br>
 	<br>
-		<h3 class="text-center text-dark">I am a CDC dataset (JSON) displayed with raw PHP</h3>
+		<h3 class="text-center text-dark">
+			I am a CDC dataset (JSON) displayed with raw PHP
+		</h3>
         </div>
 	<div class="card-body bg-light">
         <div class="form-group"> 
@@ -61,7 +68,7 @@
     </div>
 <script>
 $('#auto').autocomplete({
-        source: "autocomp.php",
+        source: "json.php",
         minLength: 1
 	});
 jQuery.ui.autocomplete.prototype._resizeMenu = function () {
@@ -72,15 +79,15 @@ jQuery.ui.autocomplete.prototype._resizeMenu = function () {
 <?php
 $query = $_GET['searchterm'];
 $string = file_get_contents("../cdc_data.json");
-$json_a = json_decode($string, true);
+$json = json_decode($string, true);
 
-$keyola = array();
+$array = array();
 
-for($i=0; $i<count($json_a['dataset']); $i++){
+for($i=0; $i<count($json['dataset']); $i++){
     
-    if(strpos($json_a['dataset'][$i]['title'], $query) !== false){
+    if(strpos($json['dataset'][$i]['title'], $query) !== false){
 
-        $keyola[] = $json_a['dataset'][$i];
+        $array[] = $json['dataset'][$i];
 
     }
 }
@@ -90,13 +97,13 @@ if(isset($query)){
 	echo '<div class="col-1></div>
 		<div class="text-dark col-10">
 		  <div class="row">
-                    <div class="col"><p class="text-dark"><b>Title: </b>'.$keyola[0]["title"].'</p></div></div>
+                    <div class="col"><p class="text-dark"><b>Title: </b>'.$array[0]["title"].'</p></div></div>
              <div class="row">
-                  <div class="col"><p class="text-dark"><b>Description: </b>'.$keyola[0]["description"].'</p></div></div>
+                  <div class="col"><p class="text-dark"><b>Description: </b>'.$array[0]["description"].'</p></div></div>
              <div class="row">
-                  <div class="col"><p class="text-dark"><b>Contact: </b>'.$keyola[0]["contactPoint"]['fn'].', '.$keyola[0]['contactPoint']['hasEmail'].'</p></div></div>
+                  <div class="col"><p class="text-dark"><b>Contact: </b>'.$array[0]["contactPoint"]['fn'].', '.$array[0]['contactPoint']['hasEmail'].'</p></div></div>
              <div class="row">
-                  <div class="col"><p class="text-dark"><b>URL: </b>'.$keyola[0]["landingPage"].'</p></div></div>
+                  <div class="col"><p class="text-dark"><b>URL: </b>'.$array[0]["landingPage"].'</p></div></div>
 
 	</div>	    
 </div> <div class="col-1">

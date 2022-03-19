@@ -13,20 +13,20 @@ $query = $_GET['term'];
 
 $string = file_get_contents("../cdc_data.json");
 
-// Decode JSON object and store in variable $json_a
+// Decode JSON object and store in variable $json
 
-$json_a = json_decode($string, true);
+$json = json_decode($string, true);
 
-// Declare data variable and iterate through $json_a
+// Declare data variable and iterate through $json
 // to return titles matching the keyword search i  $query
 
 $data = array();
 
-for($i=0; $i<count($json_a['dataset']); $i++){
+for($i=0; $i<count($json['dataset']); $i++){
 
-    if(stripos($json_a['dataset'][$i]['title'], $query) != false){
+    if(stripos($json['dataset'][$i]['title'], $query) != false){
 
-        $data[] = $json_a['dataset'][$i]['title'];
+        $data[] = $json['dataset'][$i]['title'];
 
     }
 
@@ -39,8 +39,8 @@ echo json_encode($data);
 }
 elseif(count($data)>10){
 	for($i=0; $i<10; $i++){
-		$data10[] = $data[$i];
+		$results[] = $data[$i];
 	}
-	echo json_encode($data10);
+	echo json_encode($results);
 }
 ?>
