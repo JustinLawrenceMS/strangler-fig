@@ -78,7 +78,7 @@ jQuery.ui.autocomplete.prototype._resizeMenu = function () {
 </script>
 <?php
 $query = $_GET['searchterm'];
-$string = file_get_contents("../cdc_data.json");
+$string = file_get_contents("../cdc_dataset.json");
 $json = json_decode($string, true);
 
 $array = array();
