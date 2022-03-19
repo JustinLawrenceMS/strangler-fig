@@ -20,7 +20,7 @@
 
 			background-image: url('/images/bg.jpg');
 			background-size: cover;
-			background-repeat: no-repeat;
+			background-repeat: repeat;
 
 			font-family: Times;
 		
