@@ -15,7 +15,7 @@ Then, navigate to app root by doing this:
 cd json-dataset
 ```
 
-This spin up a Web server:
+Then spin up a Web server:
 
 ```
 php -S 127.0.0.1:8000 -t public/
