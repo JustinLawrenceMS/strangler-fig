@@ -2,7 +2,7 @@
 
 This is a hobby Website intended solely to demonstrate raw, procedural PHP as an interface for 
 a Centers for Disease Control JSON dataset.  It ended up pretty fast and not incredibly verbose.
-You can see it deployed here:  https://json.buttered.app
+You can see it deployed here:  https://json-dataset.herokuapp.com/
 
 To use it, clone the repository with the following command:
 
