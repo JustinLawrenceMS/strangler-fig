@@ -1,9 +1,8 @@
-# json-dataset
+# JSON Dataset
 
-This is a hobby Website intended solely to demonstrate raw, procedural PHP as an interface for 
-a Centers for Disease Control JSON dataset.  It ended up pretty fast and not incredibly verbose.
-You can see it deployed here:  https://json-dataset.herokuapp.com/
+This is a hobby website intended solely to demonstrate raw, procedural PHP as an interface for a Centers for Disease Control JSON dataset. It ended up pretty fast and not incredibly verbose. You can see it deployed [here](https://json-dataset.herokuapp.com/).
 
+## Usage
 To use it, clone the repository with the following command:
 
 ```
@@ -23,3 +22,9 @@ php -S 127.0.0.1:8000 -t public/
 ```
 
 You have to have PHP installed.
+
+## Demo
+Check out the live demo [here](https://json-dataset.herokuapp.com/).
+
+## Contributing
+Contributions are welcome! Feel free to open an issue or submit a pull request.
