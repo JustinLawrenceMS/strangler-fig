@@ -46,13 +46,14 @@ require __DIR__.'/../vendor/autoload.php';
 
 // capture URL and see if is legacy first
 
+/* //uncomment to turn legacy app on
 if (!str_contains($_SERVER['REQUEST_URI'], '/modern') &&
     !str_contains($_SERVER['REQUEST_URI'], '/v1/autocomplete')) {
 
     return include __DIR__.'/legacy.php';
 
 } else {
-
+ */
     $app = require_once __DIR__.'/../bootstrap/app.php';
 
     $kernel = $app->make(Kernel::class);
@@ -62,4 +63,4 @@ if (!str_contains($_SERVER['REQUEST_URI'], '/modern') &&
     )->send();
 
     $kernel->terminate($request, $response);
-}
+//}

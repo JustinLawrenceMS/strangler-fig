@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/modern', [SearchController::class, 'index']);
+Route::get('/', [SearchController::class, 'index']);
