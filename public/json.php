@@ -11,7 +11,7 @@ $query = $_GET['term'];
 
 // Get content of JSON object
 
-$string = file_get_contents("../cdc_dataset.json");
+$string = file_get_contents("cdc_dataset.json");
 
 // Decode JSON object and store in variable $json
 
