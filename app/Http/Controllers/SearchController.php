@@ -9,8 +9,6 @@ class SearchController extends Controller
 {
     public function index(Request $request)
     {
-        dump("modern app");
-
         $term = $request->input('term');
         if (is_null($term)) {
             return view('welcome');
@@ -19,7 +17,7 @@ class SearchController extends Controller
 
         return view('welcome', ['table' => $table]);
     }
-    
+
     public function jsonHandler(String $term): Array
     {
         $string = Storage::disk('local')->get("cdc_dataset.json");
