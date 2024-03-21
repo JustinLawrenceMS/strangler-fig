@@ -1,134 +1,65 @@
-<!DOCTYPE html>
-<html>
-    <head>
-	<title>
-		JSON Dataset
-	</title>    
-        <script  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  >
-	</script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-  >
-	</script> 
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
-	</script>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-
-	<style>
-
-		body {
-
-			background-image: url('/images/bg.jpg');
-			background-size: cover;
-			background-repeat: repeat;
-
-			font-family: Times;
-		
-		}
-
-	</style>
-
-</head>
-<body class="bg-light">
-    <div class="container">
-	<div class="row">
-		<div class="col">
-			<h1>&nbsp;</h1>
-		</div>
-	</div>
-        <div class="row">
-	     <div class="col-1">
-                  &nbsp;
-             </div>
-        <div class="card bg-light col-10">
-             <div class="card-title">
-        <p>
-            <a href="index.php">reset page</a>
-        </p>
-        <br>
-	<br>
-		<h3 class="text-center text-dark">
-			I am a CDC dataset (JSON) displayed with raw PHP
-		</h3>
-        </div>
-	<div class="card-body bg-light">
-        <div class="form-group"> 
-        <form action="index.php" method="get">
-            <p>   
-                <input class="form-control" type="text" name="searchterm" id="auto" autocomplete="off" placeholder="Type a CDC title" />
-
-                <input class="form-control btn btn-dark" type="submit" value="Submit" />
-           </p>
-       </form>
-    </div>
-<script>
-$('#auto').autocomplete({
-        source: "json.php",
-        minLength: 1
-	});
-jQuery.ui.autocomplete.prototype._resizeMenu = function () {
-  var ul = this.menu.element;
-  ul.outerWidth(this.element.outerWidth());
-}
-</script>
 <?php
-$query = $_GET['searchterm'];
-$string = file_get_contents("cdc_dataset.json");
-$json = json_decode($string, true);
 
-$array = array();
+use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Http\Request;
 
-for($i=0; $i<count($json['dataset']); $i++){
-    
-    if(strpos($json['dataset'][$i]['title'], $query) !== false){
+define('LARAVEL_START', microtime(true));
 
-        $array[] = $json['dataset'][$i];
+/*
+|--------------------------------------------------------------------------
+| Check If The Application Is Under Maintenance
+|--------------------------------------------------------------------------
+|
+| If the application is in maintenance / demo mode via the "down" command
+| we will load this file so that any pre-rendered content can be shown
+| instead of starting the framework, which could cause an exception.
+|
+*/
 
-    }
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
 }
 
-if(isset($query)){
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| this application. We just need to utilize it! We'll simply require it
+| into the script here so we don't need to manually load our classes.
+|
+*/
 
-	echo '<div class="col-1></div>
-		<div class="text-dark col-10">
-		  <div class="row">
-                    <div class="col"><p class="text-dark"><b>Title: </b>'.$array[0]["title"].'</p></div></div>
-             <div class="row">
-                  <div class="col"><p class="text-dark"><b>Description: </b>'.$array[0]["description"].'</p></div></div>
-             <div class="row">
-                  <div class="col"><p class="text-dark"><b>Contact: </b>'.$array[0]["contactPoint"]['fn'].', '.$array[0]['contactPoint']['hasEmail'].'</p></div></div>
-             <div class="row">
-                  <div class="col"><p class="text-dark"><b>URL: </b>'.$array[0]["landingPage"].'</p></div></div>
+require __DIR__.'/../vendor/autoload.php';
 
-	</div>	    
-</div> <div class="col-1">
-                  &nbsp;
-	     </div>
-</div>
-</div>
-</div>
-</div>
-    </body>
-    </html>
-';
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request using
+| the application's HTTP kernel. Then, we will send the response back
+| to this client's browser, allowing them to enjoy our application.
+|
+*/
+
+// capture URL and see if is legacy first
+
+if (!str_contains($_SERVER['REQUEST_URI'], '/modern')) {
+
+    return include __DIR__.'/legacy.php';
+
+} else {
+
+    $app = require_once __DIR__.'/../bootstrap/app.php';
+
+    $kernel = $app->make(Kernel::class);
+
+    $response = $kernel->handle(
+        $request = Request::capture()
+    )->send();
+
+    $kernel->terminate($request, $response);
+
 }
-else{
-    
-    echo '	     <div class="col-1">
-                  &nbsp;
-	     </div>
-</div>
-</div>
-</div>
-</div>
-    </body>
-    </html>
-'
-;
-}
-?>
