@@ -12,7 +12,7 @@ Check out the live demo [here](https://json-dataset.herokuapp.com/).
 ## Contributing
 Contributions are welcome! Feel free to open an issue or submit a pull request.
 
-Notes:
+## Notes:
 
 The branches are organized by stages of strangler fig, ie strangler_fig_part_1 etc.
 
