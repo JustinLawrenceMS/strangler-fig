@@ -42,7 +42,7 @@
                 <div class="card bg-light col-10">
                     <div class="card-title">
                         <p>
-                            <a href="/modern">reset page</a>
+                            <a href="/">reset page</a>
                         </p>
                         <br>
                         <br>
@@ -52,16 +52,16 @@
                     </div>
                     <div class="card-body bg-light">
                         <div class="form-group">
-                            <form action="/modern" method="get">
+                            <form action="/" method="get">
                                 <p>
-                                    <input 
-                                        class="form-control" 
-                                        type="text" 
-                                        name="term" 
-                                        id="auto" 
-                                        value="" 
-                                        autocomplete="off" 
-                                        placeholder="Type a CDC title" 
+                                    <input
+                                        class="form-control"
+                                        type="text"
+                                        name="term"
+                                        id="auto"
+                                        value=""
+                                        autocomplete="off"
+                                        placeholder="Type a CDC title"
                                     />
 
                                     <input class="form-control btn btn-dark" type="submit" value="Submit" />
