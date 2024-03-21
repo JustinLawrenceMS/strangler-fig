@@ -3,13 +3,13 @@
     <head>
 	<title>
 		JSON Dataset
-	</title>    
+	</title>
         <script  src="https://code.jquery.com/jquery-3.4.1.min.js"
   >
 	</script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
   >
-	</script> 
+	</script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
 	</script>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -28,13 +28,14 @@
 			background-repeat: repeat;
 
 			font-family: Times;
-		
+
 		}
 
 	</style>
 
 </head>
 <body class="bg-light">
+    <?php dump("legacy app"); ?>
     <div class="container">
 	<div class="row">
 		<div class="col">
@@ -57,9 +58,9 @@
 		</h3>
         </div>
 	<div class="card-body bg-light">
-        <div class="form-group"> 
+        <div class="form-group">
         <form action="index.php" method="get">
-            <p>   
+            <p>
                 <input class="form-control" type="text" name="searchterm" id="auto" autocomplete="off" placeholder="Type a CDC title" />
 
                 <input class="form-control btn btn-dark" type="submit" value="Submit" />
@@ -84,7 +85,7 @@ $json = json_decode($string, true);
 $array = array();
 
 for($i=0; $i<count($json['dataset']); $i++){
-    
+
     if(strpos($json['dataset'][$i]['title'], $query) !== false){
 
         $array[] = $json['dataset'][$i];
@@ -105,7 +106,7 @@ if(isset($query)){
              <div class="row">
                   <div class="col"><p class="text-dark"><b>URL: </b>'.$array[0]["landingPage"].'</p></div></div>
 
-	</div>	    
+	</div>
 </div> <div class="col-1">
                   &nbsp;
 	     </div>
@@ -118,7 +119,7 @@ if(isset($query)){
 ';
 }
 else{
-    
+
     echo '	     <div class="col-1">
                   &nbsp;
 	     </div>
